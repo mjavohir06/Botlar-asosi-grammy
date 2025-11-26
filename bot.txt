@@ -1,0 +1,83 @@
+//   Shift+Alt+F  - codelarni To'g'ri joylashtirib beradi.
+
+https://chatgpt.com/c/6925ad73-23d8-8332-9b98-e29940411c22
+
+{
+  "name": "Mahsus kanal",
+  "link": "https://t.me/mahsus06bot",
+  "username": "@mahsus06bot",
+  "soni":"cheksiz"
+}
+
+
+
+
+for (let ch of CHANNELS) {
+    // faqat public kanallarni tekshira olamiz
+    if (ch.username) {
+      // if(ch.username!=="boshqa"){
+      try {
+        const member = await ctx.telegram.getChatMember(ch.username, userId);
+        if (!['member', 'administrator', 'creator'].includes(member.status)) {
+          unsubscribed.push(ch);
+        }
+      } catch (e) {
+        unsubscribed.push(ch);
+      }
+    // }
+    } else {
+      // private kanallarni tekshira olmaymiz, shunchaki linkni yuboramiz
+      unsubscribed.push(ch);
+    }
+  }
+
+  if (unsubscribed.length === 0) {
+    tekshirish=1
+    return ctx.reply('✅ Siz barcha kanallarga obuna bo‘lgansiz! Botdan foydalanishingiz mumkin 🎉');
+  }
+
+  // Obuna bo‘lmagan kanallar ro‘yxati
+  const buttons = unsubscribed.map((ch) => [Markup.button.url(ch.name, ch.link)]);
+  buttons.push([Markup.button.callback('✅ Obunani tekshirish', 'check_sub')]);
+
+  const msg=await ctx.reply(
+    '❌ Botdan foydalanish uchun quyidagi kanallarga obuna bo‘ling:',
+    Markup.inlineKeyboard(buttons)
+    
+  );
+
+
+
+
+  web app uchun
+// const express=require("express")
+
+
+  // const app=express()
+
+//Frontend faylni static qilish
+// app.use(express.static(path.join(__dirname,"web")))
+
+//mini ilova url i
+// const web_url="https://www.figma.com/design/rOvRUuLpYyFLJ1q8OUQIoO/UzChess?t=xo7yIG5WlHqUwp8x-0"
+
+//chanel.json fayli bilan bog'liq amalyotlar va funksiyalar
+
+
+// const mini=await  ctx.reply("Salom! mini ilova",
+  //     Markup.inlineKeyboard([
+  //       [Markup.button.webApp("mini ilova",web_url)],
+  //     ])
+  //   )
+  
+------------------------------------------------------------------------------------------------------
+
+  //             return ctx.reply(`
+// ❗ *Kanalga qo‘shilmagansiz!*
+// Kanalga qo‘shilish so‘rovi yuboring, so‘ng tasdiqlanadi.
+
+// 👉 Kanal: t.me/kanal_username
+
+// *Kanalga qo‘shilish tugmasi:*
+// /join
+//             `, { parse_mode: "Markdown" });
