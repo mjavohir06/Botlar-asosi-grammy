@@ -10,6 +10,7 @@ import messagetomembers from "./elements/admin/messagetomembers.js";
 import Memberchange from "./elements/ega/Memberchange.js";
 import Foydalanuchilar_soni from "./elements/admin/Foydalanuchilar_soni.js";
 import Habarochir from "./elements/admin/Habarochir.js";
+import Messagetochanel from "./elements/admin/Messagetochanel.js";
 
 // Bot token va egasi
 const bot_token = "8471724009:AAE-9Ke0ViWHx7RlnmT_994479eaqAlJrHY";
@@ -20,23 +21,24 @@ const bot = new Bot(bot_token);
 bot.use(session({
     initial: () => ({})
 }));
-bot.catch(async err=>{
-    const ctx=err.ctx
+bot.catch(async err => {
+    const ctx = err.ctx
 
-    try{
-        await bot.api.sendMessage(ega,`------❗Botda Xatolik❗------ \n \n User: ${ctx.from.first_name}, ID:${ctx.from.id} \n\n Error: ${err.error.message}`)
+    try {
+        await bot.api.sendMessage(ega, `------❗Botda Xatolik❗------ \n \n User: ${ctx.from.first_name}, ID:${ctx.from.id} \n\n Error: ${err.error.message}`)
+        console.log(err);
+        if (ctx.update?.message && ctx.from) {
+            try {
+                await ctx.reply("Botda nosozlik aniqlandi va bu xaqida bot egasiga xabar berildi! \n Iltimos /start tugmasini qayta bosing.")
+            } catch {
 
-    }catch(e){
-        console.log("Ega id xatosi: "+e.message);
-    }
-
-    if(ctx.update?.message && ctx.from){
-        try{
-            await ctx.reply("Botda nosozlik aniqlandi va bu xaqida bot egasiga xabar berildi! \n Iltimos /start tugmasini qayta bosing.")
-        }catch{
-            
+            }
         }
+    } catch (e) {
+        console.log("Ega id xatosi: " + e.message);
     }
+
+
 })
 
 // Majburiy obuna kanallari
@@ -82,6 +84,7 @@ Memberchange();
 messagetomembers();
 Habarochir();
 Foydalanuchilar_soni();
+Messagetochanel()
 
 // Botni ishga tushurish
 bot.start({
@@ -91,4 +94,3 @@ console.log("✅ Bot ishga tushdi...");
 
 // Export qilish
 export { bott, userId, bot, backmenu };
-

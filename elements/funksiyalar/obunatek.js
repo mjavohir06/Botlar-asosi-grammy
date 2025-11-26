@@ -36,7 +36,13 @@ async function obunatek(ctx) {
     if (!ctx.session) ctx.session = {};
     yukla();
     await delmess(ctx);
+    try{
+        await ctx.editMessageReplyMarkup({
+            // inline_keyboard: []
+        })
+    }catch{
 
+    }
     let unsubscribed = [];
     ctx.session.step = undefined;
     ctx.session.nomi = undefined;

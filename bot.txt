@@ -10,6 +10,9 @@ https://chatgpt.com/c/6925ad73-23d8-8332-9b98-e29940411c22
 }
 
 
+// Callback query ni javobsiz qoldirmaslik
+// await ctx.answerCallbackQuery();
+
 
 
 for (let ch of CHANNELS) {

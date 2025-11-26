@@ -11,20 +11,7 @@ export default function () {
         for (let m in MEMBERS) {
             if (MEMBERS[m].turi === "ega") {
                 const nameEscaped = MEMBERS[m].name
-                    .replace(/\./g, "\\.")
-                    .replace(/_/g, "\\_")
-                    .replace(/\*/g, "\\*")
-                    .replace(/-/g, "\\-")
-                    .replace(/`/g, "\\`")
-                    .replace(/>/g, "\\>")
-                    .replace(/#/g, "\\#")
-                    .replace(/\+/g, "\\+")
-                    .replace(/~/g, "\\~")
-                    .replace(/=/g, "\\=")
-                    .replace(/\|/g, "\\|")
-                    .replace(/{/g, "\\{")
-                    .replace(/}/g, "\\}")
-                    .replace(/!/g, "\\!");
+                    .replace(/([._*[\]()~`>#+\-=|{}!])/g, '\\$1')
                 memberlist += `Username: [${nameEscaped}](tg://user?id=${m}), id: *${m}*\n`;
             }
         }
@@ -33,20 +20,7 @@ export default function () {
         for (let m in MEMBERS) {
             if (MEMBERS[m].turi === "admin") {
                 const nameEscaped = MEMBERS[m].name
-                    .replace(/\./g, "\\.")
-                    .replace(/_/g, "\\_")
-                    .replace(/\*/g, "\\*")
-                    .replace(/-/g, "\\-")
-                    .replace(/`/g, "\\`")
-                    .replace(/>/g, "\\>")
-                    .replace(/#/g, "\\#")
-                    .replace(/\+/g, "\\+")
-                    .replace(/~/g, "\\~")
-                    .replace(/=/g, "\\=")
-                    .replace(/\|/g, "\\|")
-                    .replace(/{/g, "\\{")
-                    .replace(/}/g, "\\}")
-                    .replace(/!/g, "\\!");
+                    .replace(/([._*[\]()~`>#+\-=|{}!])/g, '\\$1')
                 memberlist += `Username: [${nameEscaped}](tg://user?id=${m}), id: *${m}*\n`;
             }
         }
