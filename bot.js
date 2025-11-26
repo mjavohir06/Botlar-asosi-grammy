@@ -1,5 +1,5 @@
 import { Bot, session, InlineKeyboard } from "grammy";
-import { session } from "@grammyjs/session";
+
 
 import { MEMBERS, memberQoshish } from "./elements/jsonreaders/member.js";
 import obunatek, { obunami } from "./elements/funksiyalar/obunatek.js";
@@ -91,3 +91,4 @@ console.log("✅ Bot ishga tushdi...");
 
 // Export qilish
 export { bott, userId, bot, backmenu };
+
