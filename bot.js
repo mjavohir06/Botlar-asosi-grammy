@@ -13,7 +13,7 @@ import Habarochir from "./elements/admin/Habarochir.js";
 import Messagetochanel from "./elements/admin/Messagetochanel.js";
 
 // Bot token va egasi
-const bot_token = "8471724009:AAE-9Ke0ViWHx7RlnmT_994479eaqAlJrHY";
+const bot_token = process.env.BOT_TOKEN;
 const ega = 6622110096;
 
 // Grammy botini yaratish
